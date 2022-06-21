@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const {Product} = require('../db')
+const {getProductByName} = require("../controllers")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -39,6 +40,20 @@ router.put("/ProductDetail/:idProduct", async (req, res) => {
         res.send(`Producto actualizado`)
     } catch (error) {
         res.status(404).send("No se pudo actualizar el producto")
+    }
+})
+
+router.get("/Catalog", async (req, res) =>{
+    const {name} = req.query
+    try {
+        if(name){
+        let product = await getProductByName(name)
+        if(product) return res.json(product)
+    }
+    let products = await Product.findAll()
+    res.json(products)        
+    } catch (error) {
+     res.status(404).send("No se pudieron obtener los productos")    
     }
 })
 

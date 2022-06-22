@@ -4,6 +4,10 @@ const {Product} = require('../db')
 // Ejemplo: const authRouter = require('./auth.js');
 const {priceOrder} = require('../controllers/priceOrder')
 const {filterCategories} = require('../controllers/filterCategories')
+
+
+
+
 const {userPost} = require('../controllers/userPost')
 
 

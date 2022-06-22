@@ -53,6 +53,27 @@ router.get('/order/:priceOrder', priceOrder)
 
 router.get('/filter/:filterCategory', filterCategories)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.post('/user', userPost)
 
 

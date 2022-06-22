@@ -43,6 +43,32 @@ router.put("/ProductDetail/:idProduct", async (req, res) => {
     }
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.get("/Catalog", async (req, res) =>{
     const {name} = req.query
     try {

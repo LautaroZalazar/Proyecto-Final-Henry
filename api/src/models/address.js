@@ -9,20 +9,26 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     number: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
     },
     zipCode: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
-    country: {
-        type: DataTypes.STRING,
-        allowNull: false
+    province: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    houseType: {
-        type: DataTypes.STRING,
-        allowNull: false
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    apartment: {
+      type: DataTypes.STRING,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   });
 };

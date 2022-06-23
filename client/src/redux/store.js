@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import carrito from './reducers/carritoR';
+import productoscreados from './reducers/createProductR';
+import PerfilDelUsuarioR from './reducers/PerfilDelUsuarioR';
 
 const reducer = combineReducers({
-    carrito,
+    productoscreados, PerfilDelUsuarioR
 })
 
 export const store = createStore(
@@ -13,4 +14,3 @@ export const store = createStore(
         applyMiddleware(thunk)
     )
 )
-

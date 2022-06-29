@@ -20,10 +20,15 @@ const {filterPriceRange} = require('../controllers/Product/GET/filterPriceRange'
 const {filterDiscount} = require('../controllers/Admin/GET/filterDiscount');
 const {adminProductsCounter} = require('../controllers/Admin/GET/adminProductsCounter');
 const { newestProducts } = require('../controllers/Product/GET/newestProducts');
+<<<<<<< HEAD
 //const {adminProductsCounter} = require('../controllers/Admin/GET/adminProductsCounter')
+=======
+>>>>>>> 27de2e6039dc709887daff5ab5f5d86038d9687d
 const {login} = require('../controllers/User/POST/login')
 const {getUserById} = require('../controllers/User/GET/getUserById');
 const verifyToken = require('../middlewares/verifyToken');
+const { mostDiscountedProducts } = require('../controllers/Product/GET/mostDiscountedProducts');
+const { bestSellingProducts } = require('../controllers/Product/GET/bestSellingProducts');
 
 
 const router = Router();
@@ -66,6 +71,10 @@ router.get('/filterPriceRange/:filterPrice', filterPriceRange)
 router.get('/filterDiscount/:discount', filterDiscount)
 
 router.get('/newestProducts', newestProducts)
+
+router.get('/mostDiscountedProducts', mostDiscountedProducts)
+
+router.get('/bestSellingProducts', bestSellingProducts)
 
 router.post('/login', login)
 

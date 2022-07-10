@@ -9,7 +9,6 @@ import DetailProduct from './components/detallesDelProducto/DetallesDelProducto'
 import PerfilDelUsuario from "./components/perfilDelUsuario/PerfilDelUsuario";
 import Favoritos from './components/favoritos/Favoritos';
 import Dashboard from './components/dashboard/Dashboard';
-// import Material_UI from './components/material_UI/Material_UI';
 import CarritoContainer from './components/carrito/CarritoContainer';
 import UpdateProduct from './components/dashboard/UpdateProduct';
 import UpdateAdmin from './components/dashboard/UpdateAdmin';
@@ -34,7 +33,6 @@ function App() {
           <Route path="/profile" element={<PerfilDelUsuario />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="/material" element={<Material_UI />} /> */}
           <Route path="/up/:id" element={<UpdateProduct />} />
           <Route path="/UpdateAdmin/:id" element={<UpdateAdmin />} />
           <Route path="/UpdateBanned/:id" element={<UpdateBanned />} />

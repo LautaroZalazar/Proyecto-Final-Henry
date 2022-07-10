@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const USER_ORDER  = 'USER_ORDER';
 export const USER_DETAIL  = 'USER_DETAIL';
+export const ADDRESS_USER = 'ADDRESS_USER';
 
 export const  userOrderA = (id)=> {
     return async function (dispatch) {
@@ -22,5 +23,16 @@ export const  userDetail = (id)=> {
             payload: json.data,
             
         })
+    }
+}
+
+export function addressUserA (id){
+    return async function (dispatch) {
+            var json = await axios.get(`/users/addresses/${id}`);
+            // console.log(json.data)
+            return dispatch ({
+                type: ADDRESS_USER,
+                payload: json.data
+            })
     }
 }

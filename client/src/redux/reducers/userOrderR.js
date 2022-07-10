@@ -1,8 +1,9 @@
-import { USER_ORDER, USER_DETAIL} from "../actions/userOrderA";
+import { USER_ORDER, USER_DETAIL, ADDRESS_USER} from "../actions/userOrderA";
 
 const initialState = {
     userOrder: [],
     listOrder: [],
+    addressUsers: [],
 }
 
 const userOrderR = (state = initialState, { type, payload }) => {
@@ -18,6 +19,11 @@ const userOrderR = (state = initialState, { type, payload }) => {
                 ...state,
                 listOrder: payload
                 
+            }
+        case ADDRESS_USER:
+            return {
+                ...state,
+                addressUsers: payload
             }
 
         default:

@@ -23,7 +23,7 @@ class PaymentService {
       back_urls: {
         failure: "https://pf-deployment.vercel.app/",
         pending: "/pending",
-        success: "https://pf-deployment.vercel.app/"
+        success: "http://localhost:3000/success",
       }, 
       "auto_return": "approved",             
   "shipments": {

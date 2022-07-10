@@ -1,6 +1,6 @@
 import { updateAddress } from '../../redux/actions/userAddressesA';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./UpdateAddress.module.css";
@@ -12,20 +12,23 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import Stack from '@mui/material/Stack';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 export default function UpdateAddress() {
+
+    const navigate = useNavigate ()
     const {user} = useAuth0()
     const allUser = useSelector((state) => state.DashboardUsersR.allUsers);
 
     const usuario = user && allUser.find(u => u.email === user.email)
-    
+
     const {id} = useParams()
     var userId = 0
 
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
-        street: "", number: 0, zipCode: "", description: "", province: "", apartment: "", location: "", id
+        street: "", number: "", zipCode: "", description: "", province: "", apartment: "", location: "", id
     })
 
     function validate(input) {
@@ -48,7 +51,8 @@ export default function UpdateAddress() {
         }
         return errors
     }
-
+      
+   
     function handleSubmit(e) {
         e.preventDefault()
         if (input.street.length > 1
@@ -61,15 +65,7 @@ export default function UpdateAddress() {
                 userId = usuario.id
                 dispatch(updateAddress(userId, input))
                 alert("Dirección agregada con éxito")
-                setInput({
-                    street: "",
-                    number: 0,
-                    province: "",
-                    zipCode: "",
-                    location: "",
-                    apartment: "",
-                    description: "",
-                })
+                navigate('/profile')
             }
         }
         else {
@@ -204,7 +200,7 @@ export default function UpdateAddress() {
                 }}
                 />
               </div>
-
+             
               <div> 
                 <TextField sx={{ bgcolor:'#dee2e6 ', color: '#dee2e6',  borderRadius: "10px" }}
                 textarea
@@ -225,8 +221,14 @@ export default function UpdateAddress() {
             <Stack direction="row" spacing={2} >
 
             <Button sx={{ m: 1, width: '70ch', color: '#022335', bgcolor:'#dee2e6', borderColor:'#022335',  borderRadius: "10px"}} type='submit' className= {style.modificar} variant="outlined" startIcon={<EditIcon fontSize = "large"/>}>
-             Crear dirección
+             Modificar dirección
             </Button>
+            </Stack>
+            <Stack direction="row" spacing={2} >
+            <Link to= "/profile" className= {style.modificar}><Button sx={{ m: 1, width: '68ch', color: '#022335', bgcolor:'#dee2e6', borderColor:'#022335',  borderRadius: "10px"}}   variant="outlined" startIcon={<KeyboardReturnIcon fontSize = "large"/>}>
+               volver
+            </Button></Link> 
+
             </Stack>
                 
             </Box>
@@ -237,3 +239,5 @@ export default function UpdateAddress() {
 
   );
 };
+
+

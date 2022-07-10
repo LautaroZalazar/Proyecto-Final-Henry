@@ -343,7 +343,7 @@ export default function UpdateProduct() {
                 
                     </Select>
                 </FormControl>
-                {errors.categories && (<p className={style.error}><p className="error" >{errors.categories}</p></p>)}
+                {/* {errors.categories && (<p className={style.error}><p className="error" >{errors.categories}</p></p>)} */}
                 </div>
             <div>
             <FormControl>

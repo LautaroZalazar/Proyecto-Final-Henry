@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./CreateAddress.module.css";
+import { useNavigate, Link } from 'react-router-dom';
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -11,8 +12,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import Stack from '@mui/material/Stack';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 export default function CreateAddress() {
+
+    const navigate = useNavigate ()
     const {user} = useAuth0()
     const allUser = useSelector((state) => state.DashboardUsersR.allUsers);
 
@@ -21,7 +25,7 @@ export default function CreateAddress() {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({})
     const [input, setInput] = useState({
-        street: "", number: 0, zipCode: "", description: "", province: "", apartment: "", location: "", userId: 0
+        street: "", number: "", zipCode: "", description: "", province: "", apartment: "", location: "", userId: 0
     })
 
     useEffect(() => {
@@ -63,9 +67,10 @@ export default function CreateAddress() {
         ) {
             dispatch(postAddress(input))
             alert("Dirección agregada con éxito")
+            navigate('/profile')
             setInput({
                 street: "",
-                number: 0,
+                number: "",
                 province: "",
                 zipCode: "",
                 location: "",
@@ -228,6 +233,12 @@ export default function CreateAddress() {
             <Button sx={{ m: 1, width: '70ch', color: '#022335', bgcolor:'#dee2e6', borderColor:'#022335',  borderRadius: "10px"}} type='submit' className= {style.modificar} variant="outlined" startIcon={<EditIcon fontSize = "large"/>}>
              Crear dirección
             </Button>
+            </Stack>
+            <Stack direction="row" spacing={2} >
+            <Link to= "/profile" className= {style.modificar}><Button sx={{ m: 1, width: '68ch', color: '#022335', bgcolor:'#dee2e6', borderColor:'#022335',  borderRadius: "10px"}}   variant="outlined" startIcon={<KeyboardReturnIcon fontSize = "large"/>}>
+               volver
+            </Button></Link> 
+
             </Stack>
                 
             </Box>
